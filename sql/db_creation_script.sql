@@ -1,5 +1,24 @@
 /*Dropt tables to recreate them*/
-DROP TABLE IF EXISTS user_type, user, company_type, company, company_location, points_earning_type, points_earning, seller, offer, offer_subscription, balance, seller, reduction_type, reduction, stats_company, stats_reduction_user, reduction_value;
+USE fidelight;
+DROP TABLE IF EXISTS stats_company;
+DROP TABLE IF EXISTS stats_reduction_user;
+DROP TABLE IF EXISTS reduction_value;
+DROP TABLE IF EXISTS seller;
+DROP TABLE IF EXISTS balance;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS user_type;
+DROP TABLE IF EXISTS offer_subscription;
+DROP TABLE IF EXISTS reduction;
+DROP TABLE IF EXISTS company_location;
+DROP TABLE IF EXISTS points_earning;
+DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS points_earning_type;
+DROP TABLE IF EXISTS company_type;
+DROP TABLE IF EXISTS offer;
+DROP TABLE IF EXISTS reduction_type;
+
+
+
 
 /*Table to manage user types and privileges*/
 CREATE TABLE user_type(
@@ -46,10 +65,10 @@ company_type smallint unsigned not null,
 PRIMARY KEY (id),
 FOREIGN KEY (company_type) REFERENCES company_type(id));
 
-/*Table to manage compagny locations */
+/*Table to manage company locations */
 CREATE TABLE company_location(
 id int unsigned not null auto_increment,
-company int unsigned not null auto_increment,
+company int unsigned not null,
 location varchar(255),
 PRIMARY KEY (id),
 FOREIGN KEY (company) REFERENCES company(id));
@@ -69,15 +88,6 @@ value smallint not null,
 PRIMARY KEY (company, points_earning_type),
 FOREIGN KEY (company) REFERENCES company(id),
 FOREIGN KEY (points_earning_type) REFERENCES points_earning_type(id));
-
-/*Table to manage sellers from companies*/
-CREATE TABLE seller(
-company_id smallint unsigned,
-name varchar(50) not null,
-hash_pwd varchar(255) not null,
-mail varchar(150) not null,
-constraint pk_seller primary key (company_id, name),
-constraint fk_seller_company_id foreign key (company_id) REFERENCES company(id));
 
 /*Table to manage offers FideLight proposes to companies*/
 CREATE TABLE offer(
