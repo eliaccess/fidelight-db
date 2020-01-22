@@ -10,5 +10,10 @@ This repository contains all the data related to the database :
 - The backup system
 > Saving the db, dumping it etc.	
 
-If needed, datasets in the **dev branch** can be added.
+Use a custom branch until the version is stable, then merge on **master** or **prod**.
 
+If needed, datasets can be added to a **branch**.
+
+## UML diagram of the database
+
+![db_uml_diagram](https://gitlab.com/elimouni/fidelight_db/blob/master/img/uml_db.png)
