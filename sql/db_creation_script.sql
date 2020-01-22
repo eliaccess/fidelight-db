@@ -128,6 +128,7 @@ FOREIGN KEY (user) REFERENCES user(id));
 /*Table to manage reduction offers types*/
 CREATE TABLE reduction_type(
 id smallint unsigned not null auto_increment,
+name varchar(30),
 description varchar(150),
 PRIMARY KEY (id));
 
