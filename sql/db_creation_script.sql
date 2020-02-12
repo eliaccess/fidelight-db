@@ -1,4 +1,4 @@
-/*Dropt tables to recreate them*/
+/*Drop tables to recreate them*/
 USE fidelight;
 DROP TABLE IF EXISTS stats_company;
 DROP TABLE IF EXISTS stats_reduction_user;
@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS user_type;
 DROP TABLE IF EXISTS offer_subscription;
 DROP TABLE IF EXISTS reduction;
+DROP TABLE IF EXISTS company_location_picture;
 DROP TABLE IF EXISTS company_location;
 DROP TABLE IF EXISTS points_earning;
 DROP TABLE IF EXISTS company;
