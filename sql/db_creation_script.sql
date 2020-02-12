@@ -57,6 +57,7 @@ name varchar(50) not null,
 description varchar(250),
 phone int unsigned,
 registration_date date not null,
+background_picture varchar(250),
 company_type smallint unsigned not null,
 PRIMARY KEY (id),
 FOREIGN KEY (company_type) REFERENCES company_type(id));
@@ -68,6 +69,14 @@ company int unsigned not null,
 location varchar(255),
 PRIMARY KEY (id),
 FOREIGN KEY (company) REFERENCES company(id));
+
+/*Table to manage company locations pictures for their profile*/
+CREATE TABLE company_location_picture(
+id int unsigned not null auto_increment,
+company_location int unsigned not null,
+picture_link varchar(255),
+PRIMARY KEY (id),
+FOREIGN KEY (company_location) REFERENCES company_location(id));
 
 /*Table to manage the types of earning ways to get fidelity points*/
 CREATE TABLE points_earning_type(
@@ -147,6 +156,7 @@ id int unsigned not null auto_increment,
 company int unsigned not null,
 reduction_type smallint unsigned not null,
 cost smallint unsigned,
+name varchar(100),
 description varchar(250),
 product varchar(250),
 nb_max int unsigned,
