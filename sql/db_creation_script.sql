@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS stats_reduction_user;
 DROP TABLE IF EXISTS reduction_value;
 DROP TABLE IF EXISTS seller;
 DROP TABLE IF EXISTS balance;
+DROP TABLE IF EXISTS ceo;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS user_type;
 DROP TABLE IF EXISTS offer_subscription;
@@ -51,15 +52,8 @@ PRIMARY KEY (id));
 CREATE TABLE company(
 id int unsigned not null auto_increment,
 name varchar(50) not null,
-login varchar(50) not null,
-mail varchar(150) not null,
-hash_pwd varchar(255) not null,
+description varchar(250),
 phone int unsigned,
-iban varchar(30),
-bic varchar(30),
-card_number varchar(20),
-card_expiration varchar(6),
-card_crypto varchar(4),
 registration_date date not null,
 company_type smallint unsigned not null,
 PRIMARY KEY (id),
@@ -121,6 +115,19 @@ CREATE TABLE seller(
 company int unsigned not null,
 user int unsigned not null,
 codes_scanned int unsigned,
+PRIMARY KEY (company, user),
+FOREIGN KEY (company) REFERENCES company(id),
+FOREIGN KEY (user) REFERENCES user(id));
+
+/*Table to assign a user to be the ceo of a company*/
+CREATE TABLE ceo(
+company int unsigned not null,	
+user int unsigned not null,
+iban varchar(30),
+bic varchar(30),
+card_number varchar(20),
+card_expiration varchar(6),
+card_crypto varchar(4),
 PRIMARY KEY (company, user),
 FOREIGN KEY (company) REFERENCES company(id),
 FOREIGN KEY (user) REFERENCES user(id));
