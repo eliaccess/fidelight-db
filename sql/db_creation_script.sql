@@ -57,7 +57,8 @@ id int unsigned not null auto_increment,
 login varchar(50) not null,
 name varchar(50) not null,
 description varchar(250),
-phone int unsigned,
+phone_number varchar(15),
+phone_code int unsigned,
 registration_date date not null,
 background_picture varchar(250),
 company_type smallint unsigned not null,
@@ -68,7 +69,11 @@ FOREIGN KEY (company_type) REFERENCES company_type(id));
 CREATE TABLE company_location(
 id int unsigned not null auto_increment,
 company int unsigned not null,
-location varchar(255),
+gps_coordinates varchar(255),
+number smallint unsigned,
+street varchar(180),
+city varchar(80),
+country varchar(50),
 PRIMARY KEY (id),
 FOREIGN KEY (company) REFERENCES company(id));
 
