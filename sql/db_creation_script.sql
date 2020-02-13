@@ -54,6 +54,7 @@ PRIMARY KEY (id));
 /*Table to manage companies*/
 CREATE TABLE company(
 id int unsigned not null auto_increment,
+login varchar(50) not null,
 name varchar(50) not null,
 description varchar(250),
 phone int unsigned,
