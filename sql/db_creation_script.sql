@@ -70,7 +70,7 @@ CREATE TABLE company_location(
 id int unsigned not null auto_increment,
 company int unsigned not null,
 gps_coordinates varchar(255),
-number smallint unsigned,
+street_number smallint unsigned,
 street varchar(180),
 city varchar(80),
 country varchar(50),
