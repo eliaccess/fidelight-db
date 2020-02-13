@@ -1,5 +1,9 @@
-/*Drop tables to recreate them*/
+/*Create the database*/
+DROP DATABASE IF EXISTS fidelight;
+CREATE DATABASE fidelight;
 USE fidelight;
+
+/*Drop tables to recreate them*/
 DROP TABLE IF EXISTS stats_company;
 DROP TABLE IF EXISTS stats_reduction_user;
 DROP TABLE IF EXISTS reduction_value;
