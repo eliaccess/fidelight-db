@@ -69,6 +69,8 @@ FOREIGN KEY (company_type) REFERENCES company_type(id));
 CREATE TABLE company_location(
 id int unsigned not null auto_increment,
 company int unsigned not null,
+phone_number varchar(15),
+phone_code int unsigned,
 gps_coordinates varchar(255),
 street_number smallint unsigned,
 street varchar(180),
