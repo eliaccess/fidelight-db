@@ -20,4 +20,4 @@ INSERT INTO company_location VALUES (3, 2, "654987152", 33, "La41.9856743°Lo1.5
 INSERT INTO company_location_picture VALUES (null, 3, "/img/pharmacieclosdesroses-deventure.png");
 INSERT INTO company_location_picture VALUES (null, 3, "/img/pharmacieclosdesroses-interieur.png");
 
-SELECT * FROM company;
+#SELECT * FROM company;
