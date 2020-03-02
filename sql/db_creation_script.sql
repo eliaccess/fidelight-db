@@ -10,6 +10,7 @@ DROP TABLE IF EXISTS reduction_value;
 DROP TABLE IF EXISTS seller;
 DROP TABLE IF EXISTS balance;
 DROP TABLE IF EXISTS ceo;
+DROP TABLE IF EXISTS paying_method;
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS user_type;
 DROP TABLE IF EXISTS offer_subscription;
@@ -48,6 +49,19 @@ user_type smallint unsigned not null,
 PRIMARY KEY (id),
 FOREIGN KEY (user_type) REFERENCES user_type(id));
 
+
+/*Table to manage payment methods*/
+CREATE TABLE paying_method(
+id int unsigned not null,
+user int unsigned not null,
+iban varchar(30),
+bic varchar(30),
+card_number varchar(20),
+card_expiration varchar(6),
+card_crypto varchar(4),
+PRIMARY KEY (id),
+FOREIGN KEY (user) REFERENCES user(id));
+
 /*Table to manage companies types */
 CREATE TABLE company_type(
 id smallint unsigned not null auto_increment,
@@ -61,10 +75,11 @@ id int unsigned not null auto_increment,
 login varchar(50) not null,
 name varchar(50) not null,
 description varchar(250),
-phone_number varchar(15),
 phone_code int unsigned,
+phone_number varchar(15),
 registration_date date not null,
 background_picture varchar(250),
+logo varchar(250),
 company_type smallint unsigned not null,
 PRIMARY KEY (id),
 FOREIGN KEY (company_type) REFERENCES company_type(id));
@@ -73,8 +88,8 @@ FOREIGN KEY (company_type) REFERENCES company_type(id));
 CREATE TABLE company_location(
 id int unsigned not null auto_increment,
 company int unsigned not null,
-phone_number varchar(15),
 phone_code int unsigned,
+phone_number varchar(15),
 gps_coordinates varchar(255),
 street_number smallint unsigned,
 street varchar(180),
@@ -147,14 +162,11 @@ FOREIGN KEY (user) REFERENCES user(id));
 CREATE TABLE ceo(
 company int unsigned not null,	
 user int unsigned not null,
-iban varchar(30),
-bic varchar(30),
-card_number varchar(20),
-card_expiration varchar(6),
-card_crypto varchar(4),
+paying_method int unsigned not null,
 PRIMARY KEY (company, user),
 FOREIGN KEY (company) REFERENCES company(id),
-FOREIGN KEY (user) REFERENCES user(id));
+FOREIGN KEY (user) REFERENCES user(id),
+FOREIGN KEY (paying_method) REFERENCES paying_method(id));
 
 /*Table to manage reduction offers types*/
 CREATE TABLE reduction_type(
