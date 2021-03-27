@@ -107,7 +107,7 @@ CREATE TABLE company_location(
 id int unsigned not null auto_increment,
 company int unsigned not null,
 phone varchar(25),
-siret varchar(14) not null,
+siret varchar(14),
 longitude decimal(10,8),
 latitude decimal(10,8),
 street_number varchar(10) not null,
