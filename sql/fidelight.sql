@@ -197,6 +197,14 @@ PRIMARY KEY (company, user),
 FOREIGN KEY (company) REFERENCES company(id),
 FOREIGN KEY (user) REFERENCES user(id));
 
+/*Table to manage the user's liked companies*/
+CREATE TABLE user_like(
+company int unsigned not null,
+user int unsigned not null,
+PRIMARY KEY (company, user),
+FOREIGN KEY (company) REFERENCES company(id),
+FOREIGN KEY (user) REFERENCES user(id));
+
 /*Table to assign users to be sellers for compagnies*/
 CREATE TABLE seller(
 id int unsigned not null auto_increment,
