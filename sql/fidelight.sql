@@ -5,6 +5,7 @@ USE fidelight;
 
 /*Drop tables to recreate them*/
 DROP TABLE IF EXISTS transaction;
+DROP TABLE IF EXISTS user_like;
 DROP TABLE IF EXISTS schedule;
 DROP TABLE IF EXISTS discount_value;
 DROP TABLE IF EXISTS discount_repetition;
@@ -131,9 +132,10 @@ CREATE TABLE schedule(
 id int unsigned not null auto_increment,
 company_location int unsigned not null,
 day smallint,
-am smallint,
-open time,
-close time,
+open_am time,
+close_am time,
+open_pm time,
+close_pm time,
 PRIMARY KEY (id),
 FOREIGN KEY (company_location) REFERENCES company_location(id));
 
