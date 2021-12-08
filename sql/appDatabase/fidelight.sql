@@ -45,14 +45,22 @@ salt varchar(30) not null,
 qr_key varchar(10) not null,
 email varchar(100),
 phone varchar(25),
-google_token varchar(255),
-facebook_token varchar(255),
 registration_date datetime not null,
 birthdate date,
 profile_picture_link varchar(255),
 verified smallint unsigned,
 active smallint unsigned,
 PRIMARY KEY (id));
+
+/*Table to manage users*/
+CREATE TABLE user_social(
+id int unsigned not null auto_increment,
+user int unsigned not null,
+social_id varchar(255) not null,
+email varchar(100),
+provider varchar(30) not null,
+PRIMARY KEY (id),
+FOREIGN KEY (user) REFERENCES user(id));
 
 /*Table to link a user to a user type */
 CREATE TABLE user_category(
@@ -80,6 +88,7 @@ CREATE TABLE company_type(
 id smallint unsigned not null auto_increment,
 name varchar(50) not null,
 description text,
+logo_link varchar(255),
 PRIMARY KEY (id));
 
 /*Table to manage companies*/
@@ -93,6 +102,7 @@ email varchar(100) not null,
 description text,
 phone varchar(25) not null,
 registration_date datetime not null,
+website varchar(255),
 background_picture varchar(255),
 logo_link varchar(255),
 paying_method int unsigned,
