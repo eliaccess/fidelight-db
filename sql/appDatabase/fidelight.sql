@@ -40,7 +40,7 @@ CREATE TABLE user(
 id int unsigned not null auto_increment,
 surname varchar(50),
 name varchar(50),
-hash_pwd binary(60) not null,
+hash_pwd binary(60),
 salt varchar(30) not null,
 qr_key varchar(10) not null,
 email varchar(100),
